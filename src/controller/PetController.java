@@ -18,8 +18,14 @@ public class PetController implements PetListener {
   }
 
   @Override
-  public void handleClickEvent() {
+  public void handleLeftClickEvent() {
     pet.toggleIdle();
+    view.update();
+  }
+
+  @Override
+  public void handleRightClickEvent() {
+    pet.toggleSleep();
     view.update();
   }
 

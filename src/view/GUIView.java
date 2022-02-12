@@ -6,11 +6,10 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 import java.util.ArrayList;
-import javax.swing.Icon;
 import javax.swing.ImageIcon;
-import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.SwingUtilities;
 import model.BlackHolePet;
 import model.State;
 
@@ -22,6 +21,7 @@ public class GUIView extends JFrame {
   private final String PATH_IDLE = "res/idle.gif";
   private final String PATH_IDLE2 = "res/idle2.gif";
   private final String PATH_SQUIRM = "res/squirm.gif";
+  private final String PATH_SLEEP = "res/sleep.gif";
 
   private JLabel label;
   private ImageIcon icon;
@@ -51,7 +51,12 @@ public class GUIView extends JFrame {
       @Override
       public void mouseClicked(MouseEvent e) {
         for (PetListener l : listeners) {
-          l.handleClickEvent();
+          if (SwingUtilities.isLeftMouseButton(e)) {
+            l.handleLeftClickEvent();
+          }
+          else {
+            l.handleRightClickEvent();
+          }
         }
       }
 
@@ -111,6 +116,8 @@ public class GUIView extends JFrame {
         return PATH_IDLE;
       case IDLE2:
         return PATH_IDLE2;
+      case SLEEP:
+        return PATH_SLEEP;
       default:
         return "";
     }

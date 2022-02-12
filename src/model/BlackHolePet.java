@@ -52,6 +52,17 @@ public class BlackHolePet {
     this.y = y;
   }
 
+  public void toggleSleep() {
+    if (state.equals(State.SLEEP)) {
+      this.state = State.IDLE;
+    }
+    else {
+      this.state = State.SLEEP;
+      this.dx = 0;
+      this.dy = 0;
+    }
+  }
+
   public void toggleIdle() {
     if (state.equals(State.IDLE)) {
       this.state = State.IDLE2;
