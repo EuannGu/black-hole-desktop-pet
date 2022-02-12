@@ -8,6 +8,7 @@ import java.awt.event.MouseMotionListener;
 import java.util.ArrayList;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import model.BlackHolePet;
@@ -20,9 +21,11 @@ public class GUIView extends JFrame {
   // gifs
   private final String PATH_IDLE = "res/idle.gif";
   private final String PATH_IDLE2 = "res/idle2.gif";
+  private final String PATH_SQUIRM = "res/squirm.gif";
 
   private JLabel label;
   private ImageIcon icon;
+  private boolean drag;
 
   /**
    * Creates a {@code GuiView} instance.
@@ -30,6 +33,7 @@ public class GUIView extends JFrame {
   public GUIView(BlackHolePet pet) {
     this.pet = pet;
     this.listeners = new ArrayList<>();
+    this.drag = false;
     // create and set up a window
     setTitle("supermassive");
     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -53,12 +57,16 @@ public class GUIView extends JFrame {
 
       @Override
       public void mousePressed(MouseEvent e) {
-
+        drag = true;
+        icon.getImage().flush();
+        icon = new ImageIcon(PATH_SQUIRM);
+        label.setIcon(icon);
       }
 
       @Override
       public void mouseReleased(MouseEvent e) {
-
+        drag = false;
+        update();
       }
 
       @Override
@@ -75,7 +83,11 @@ public class GUIView extends JFrame {
     label.addMouseMotionListener(new MouseMotionListener() {
       @Override
       public void mouseDragged(MouseEvent e) {
-
+        if (drag) {
+          for (PetListener l : listeners) {
+            l.handleDragEvent(e.getX(), e.getY());
+          }
+        }
       }
 
       @Override
@@ -105,9 +117,11 @@ public class GUIView extends JFrame {
   }
 
   public void update() {
-    icon.getImage().flush();
-    icon = new ImageIcon(getPath(pet.getState()));
-    label.setIcon(icon);
+    if (!drag) {
+      icon.getImage().flush();
+      icon = new ImageIcon(getPath(pet.getState()));
+      label.setIcon(icon);
+    }
+    setLocation(pet.getX(), pet.getY());
   }
-
 }

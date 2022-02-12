@@ -7,4 +7,6 @@ public interface PetListener {
 
   void handleClickEvent();
 
+  void handleDragEvent(int x, int y);
+
 }

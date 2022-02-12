@@ -23,4 +23,11 @@ public class PetController implements PetListener {
     view.update();
   }
 
+  @Override
+  public void handleDragEvent(int x, int y) {
+    pet.setX(pet.getX() + x);
+    pet.setY(pet.getY() + y);
+    view.update();
+  }
+
 }
