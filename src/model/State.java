@@ -7,5 +7,6 @@ public enum State {
   IDLE,
   IDLE2,
   SLEEP,
-  MOVING
+  MOVING,
+  DRAGGED
 }

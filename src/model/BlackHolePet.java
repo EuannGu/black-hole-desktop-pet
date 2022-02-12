@@ -9,7 +9,7 @@ import java.awt.Toolkit;
 public class BlackHolePet {
   private int x;
   private int y;
-  private int dx;
+  private int dx; //destination x and y
   private int dy;
   private State state;
 
@@ -52,6 +52,10 @@ public class BlackHolePet {
     this.y = y;
   }
 
+  public void setState(State state) {
+    this.state = state;
+  }
+
   public void toggleSleep() {
     if (state.equals(State.SLEEP)) {
       this.state = State.IDLE;
@@ -69,6 +73,35 @@ public class BlackHolePet {
     }
     else if (state.equals(State.IDLE2)) {
       this.state = State.IDLE;
+    }
+  }
+
+  public void generateDest() {
+    dx = (int) (Math.random() * this.screenWidth);
+    dy = (int) (Math.random() * this.screenHeight);
+  }
+
+  // move one step closer to dx and dy
+  public void move() {
+    if (dx == 0 && dy == 0) {
+      this.state = State.IDLE;
+      return;
+    }
+    if (x < dx) {
+      x++;
+    }
+    else if (x > dx) {
+      x--;
+    }
+    if (y < dy) {
+      y++;
+    }
+    else if (y > dy) {
+      y--;
+    }
+    if (x == dx && y == dy) {
+      dx = 0;
+      dy = 0;
     }
   }
 }

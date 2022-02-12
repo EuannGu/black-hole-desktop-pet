@@ -35,7 +35,7 @@ public class GUIView extends JFrame {
     this.listeners = new ArrayList<>();
     this.drag = false;
     // create and set up a window
-    setTitle("supermassive");
+    setTitle("inky");
     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     // frame is transparent
     setUndecorated(true); // cancel window title bar
@@ -63,6 +63,7 @@ public class GUIView extends JFrame {
       @Override
       public void mousePressed(MouseEvent e) {
         drag = true;
+        pet.setState(State.DRAGGED);
         icon.getImage().flush();
         icon = new ImageIcon(PATH_SQUIRM);
         label.setIcon(icon);
@@ -71,7 +72,10 @@ public class GUIView extends JFrame {
       @Override
       public void mouseReleased(MouseEvent e) {
         drag = false;
-        update();
+        pet.setState(State.IDLE);
+        icon.getImage().flush();
+        icon = new ImageIcon(PATH_IDLE);
+        label.setIcon(icon);
       }
 
       @Override
@@ -124,7 +128,7 @@ public class GUIView extends JFrame {
   }
 
   public void update() {
-    if (!drag) {
+    if (!drag && !(pet.getState().equals(State.MOVING))) {
       icon.getImage().flush();
       icon = new ImageIcon(getPath(pet.getState()));
       label.setIcon(icon);
