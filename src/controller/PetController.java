@@ -1,9 +1,10 @@
 package controller;
 
 import model.BlackHolePet;
+import model.State;
 import view.GUIView;
 
-public class PetController {
+public class PetController implements PetListener {
   private BlackHolePet pet;
   private GUIView view;
 
@@ -13,7 +14,13 @@ public class PetController {
   }
 
   public void go() {
+    view.addViewListener(this);
+  }
 
+  @Override
+  public void handleClickEvent() {
+    pet.toggleIdle();
+    view.update();
   }
 
 }

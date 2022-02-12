@@ -39,4 +39,25 @@ public class BlackHolePet {
     int temp = this.y;
     return temp;
   }
+
+  public State getState() {
+    return this.state;
+  }
+
+  public void setX(int x) {
+    this.x = x;
+  }
+
+  public void setY(int y) {
+    this.y = y;
+  }
+
+  public void toggleIdle() {
+    if (state.equals(State.IDLE)) {
+      this.state = State.IDLE2;
+    }
+    else if (state.equals(State.IDLE2)) {
+      this.state = State.IDLE;
+    }
+  }
 }
