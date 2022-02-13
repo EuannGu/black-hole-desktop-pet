@@ -22,6 +22,7 @@ public class GUIView extends JFrame {
   private final String PATH_IDLE2 = "res/idle2.gif";
   private final String PATH_SQUIRM = "res/squirm.gif";
   private final String PATH_SLEEP = "res/sleep.gif";
+  private final String PATH_EAT = "res/eat.gif";
 
   private JLabel label;
   private ImageIcon icon;
@@ -122,6 +123,8 @@ public class GUIView extends JFrame {
         return PATH_IDLE2;
       case SLEEP:
         return PATH_SLEEP;
+      case EATING:
+        return PATH_EAT;
       default:
         return "";
     }
@@ -134,5 +137,17 @@ public class GUIView extends JFrame {
       label.setIcon(icon);
     }
     setLocation(pet.getX(), pet.getY());
+  }
+
+  public void eat() {
+    toFront();
+    update();
+    try {
+      Thread.sleep(2400);
+    } catch (InterruptedException e) {
+      e.printStackTrace();
+    }
+    pet.setState(State.IDLE);
+    System.out.println("ate");
   }
 }

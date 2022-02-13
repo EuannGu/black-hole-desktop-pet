@@ -26,6 +26,7 @@ public class PetController implements PetListener, PlanetListener {
     planetView.addViewListener(this);
 
     Timer timer = new Timer();
+    // generate new destination if pet is available every 10 seconds
     timer.schedule(new TimerTask() {
       @Override
       public void run() {
@@ -35,6 +36,7 @@ public class PetController implements PetListener, PlanetListener {
         }
       }
     }, 0, 10000);
+    // move pet if it has a destination and is moving
     timer.schedule(new TimerTask() {
       @Override
       public void run() {
@@ -44,6 +46,16 @@ public class PetController implements PetListener, PlanetListener {
         }
       }
     }, 0, 100);
+    // check if pet is on top of planet, and if so, eating sequence
+    timer.schedule(new TimerTask() {
+      @Override
+      public void run() {
+        if (pet.getX() - planet.getX() < 1 && pet.getY() - planet.getY() < 1) {
+          handleEatEvent();
+          System.out.println("handle eat event");
+        }
+      }
+    }, 1000, 400);
   }
 
   @Override
@@ -70,5 +82,12 @@ public class PetController implements PetListener, PlanetListener {
     planet.setX(planet.getX() + x);
     planet.setY(planet.getY() + y);
     planetView.update();
+  }
+
+  public void handleEatEvent() {
+    // planet reset
+    pet.setState(State.EATING);
+    view.eat();
+    view.update();
   }
 }

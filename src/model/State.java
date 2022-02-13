@@ -8,5 +8,6 @@ public enum State {
   IDLE2,
   SLEEP,
   MOVING,
-  DRAGGED
+  DRAGGED,
+  EATING
 }
