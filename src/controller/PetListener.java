@@ -1,7 +1,14 @@
 package controller;
 
+/**
+ * This interface contains all the behaviors that a listener to a GUI should support for a pet
+ * listener.
+ */
 public interface PetListener {
 
+  /**
+   * Toggles spin direction on left click.
+   */
   void handleLeftClickEvent();
 
   /**

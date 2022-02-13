@@ -11,6 +11,9 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import model.Planet;
 
+/**
+ * Represents a view of a planet.
+ */
 public class PlanetView extends JFrame {
 
   private Planet planet;
@@ -34,8 +37,10 @@ public class PlanetView extends JFrame {
     paths.add("res/saturn.png");
     paths.add("res/earth.png");
     paths.add("res/mars.png");
+    paths.add("res/mercury.png");
     paths.add("res/chicken.png");
-    // TODO
+    paths.add("res/neptune.png");
+    paths.add("res/jupiter.png");
 
     this.listeners = new ArrayList<>();
     this.drag = false;
@@ -98,14 +103,23 @@ public class PlanetView extends JFrame {
     setVisible(true);
   }
 
+  /**
+   * Adds the given listener to respond to interactions with this view.
+   */
   public void addViewListener(PlanetListener listener) {
     this.listeners.add(listener);
   }
 
+  /**
+   * Updates the view to display the planet with the current planet coordinates.
+   */
   public void update() {
     setLocation(planet.getX(), planet.getY());
   }
 
+  /**
+   * Cycles through a list of planets to display in this view.
+   */
   public void changePlanet() {
     if (path == paths.size()-1) {
       path = 0;
