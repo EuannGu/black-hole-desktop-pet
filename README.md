@@ -10,7 +10,11 @@
 * Drag planets around.
 * Hover over Inky to see his inner thoughts!
 
-DevPost: [TODO link]
+## DevPost: [link to come once projects are released!]()
+
+## How to run
+Download the [jar file](https://github.com/EuannGu/black-hole-desktop-pet/blob/main/black-hole-desktop-pet.jar) and click it!
+
 
 Custom art by us!
 
