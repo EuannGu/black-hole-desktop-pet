@@ -50,7 +50,8 @@ public class PetController implements PetListener, PlanetListener {
     timer.schedule(new TimerTask() {
       @Override
       public void run() {
-        if (pet.getX() - planet.getX() < 1 && pet.getY() - planet.getY() < 1) {
+        if (pet.getX() - planet.getX() < 10 && pet.getY() - planet.getY() < 10
+        && pet.getX() - planet.getX() > -10 && pet.getY() - planet.getY() > -10) {
           handleEatEvent();
           System.out.println("handle eat event");
         }
@@ -85,9 +86,11 @@ public class PetController implements PetListener, PlanetListener {
   }
 
   public void handleEatEvent() {
-    // planet reset
     pet.setState(State.EATING);
     view.eat();
+    // planet spawn in random place
+    planet.respawn();
+    planetView.update();
     view.update();
   }
 }

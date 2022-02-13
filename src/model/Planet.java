@@ -32,4 +32,10 @@ public class Planet {
     this.y = y;
   }
 
+  public void respawn() {
+    Dimension screenSize =  Toolkit.getDefaultToolkit().getScreenSize();
+    this.x = (int) (Math.random() * screenSize.getWidth());
+    this.y = (int) (Math.random() * screenSize.getHeight());
+  }
+
 }
