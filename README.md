@@ -15,7 +15,7 @@
 ## How to run
 Download the [jar file](https://github.com/EuannGu/black-hole-desktop-pet/blob/main/black-hole-desktop-pet.jar) and click it!
 
-
+## Credits
 Custom art by us!
 
 Jessica Luo, Rachael Cheung, and Euann Gu
