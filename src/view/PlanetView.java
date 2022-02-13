@@ -23,6 +23,10 @@ public class PlanetView extends JFrame {
   private boolean drag;
   private ArrayList<PlanetListener> listeners;
 
+  /**
+   * Creates a PlanetView with a provided planet.
+   * @param planet a planet object to be rendered
+   */
   public PlanetView(Planet planet) {
     this.planet = planet;
     paths = new ArrayList<>();
