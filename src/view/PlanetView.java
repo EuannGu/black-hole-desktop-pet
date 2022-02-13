@@ -5,6 +5,7 @@ import java.awt.Color;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
+import java.net.URL;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -18,7 +19,7 @@ public class PlanetView extends JFrame {
 
   private Planet planet;
 
-  private ArrayList<String> paths;
+  private ArrayList<URL> paths;
   private int path;
 
   private JLabel label;
@@ -33,14 +34,14 @@ public class PlanetView extends JFrame {
   public PlanetView(Planet planet) {
     this.planet = planet;
     paths = new ArrayList<>();
-    paths.add("res/moon.png");
-    paths.add("res/saturn.png");
-    paths.add("res/earth.png");
-    paths.add("res/mars.png");
-    paths.add("res/mercury.png");
-    paths.add("res/chicken.png");
-    paths.add("res/neptune.png");
-    paths.add("res/jupiter.png");
+    paths.add(getClass().getResource("/moon.png"));
+    paths.add(getClass().getResource("/saturn.png"));
+    paths.add(getClass().getResource("/earth.png"));
+    paths.add(getClass().getResource("/mars.png"));
+    paths.add(getClass().getResource("/mercury.png"));
+    paths.add(getClass().getResource("/chicken.png"));
+    paths.add(getClass().getResource("/neptune.png"));
+    paths.add(getClass().getResource("/jupiter.png"));
 
     this.listeners = new ArrayList<>();
     this.drag = false;

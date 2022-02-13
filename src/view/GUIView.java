@@ -5,6 +5,7 @@ import java.awt.Color;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
+import java.net.URL;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
@@ -23,11 +24,11 @@ public class GUIView extends JFrame {
   private ArrayList<PetListener> listeners;
 
   // gifs
-  private final String PATH_IDLE = "res/idle.gif";
-  private final String PATH_IDLE2 = "res/idle2.gif";
-  private final String PATH_SQUIRM = "res/squirm.gif";
-  private final String PATH_SLEEP = "res/sleep.gif";
-  private final String PATH_EAT = "res/eat.gif";
+  private final URL PATH_IDLE = getClass().getResource("/idle.gif");
+  private final URL PATH_IDLE2 = getClass().getResource("/idle2.gif");
+  private final URL PATH_SQUIRM = getClass().getResource("/squirm.gif");
+  private final URL PATH_SLEEP = getClass().getResource("/sleep.gif");
+  private final URL PATH_EAT = getClass().getResource("/eat.gif");
 
   private JLabel label;
   private ImageIcon icon;
@@ -151,7 +152,7 @@ public class GUIView extends JFrame {
   /**
    * Gets the path to the gif corresponding to the given state.
    */
-  private String getPath(State state) {
+  private URL getPath(State state) {
     switch (state) {
       case IDLE:
         return PATH_IDLE;
@@ -162,7 +163,7 @@ public class GUIView extends JFrame {
       case EATING:
         return PATH_EAT;
       default:
-        return "";
+        return null;
     }
   }
 
