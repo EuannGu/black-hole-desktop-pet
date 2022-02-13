@@ -8,12 +8,18 @@ import model.State;
 import view.GUIView;
 import view.PlanetView;
 
+/**
+ * A controller for a desktop pet.
+ */
 public class PetController implements PetListener, PlanetListener {
   private BlackHolePet pet;
   private GUIView view;
   private Planet planet;
   private PlanetView planetView;
 
+  /**
+   * Creates a desktop pet with a new pet, view, and their views.
+   */
   public PetController() {
     pet = new BlackHolePet();
     view = new GUIView(pet);
@@ -21,6 +27,9 @@ public class PetController implements PetListener, PlanetListener {
     planetView = new PlanetView(planet);
   }
 
+  /**
+   * Starts a new instance of this controller.
+   */
   public void go() {
     view.addViewListener(this);
     planetView.addViewListener(this);
@@ -54,7 +63,6 @@ public class PetController implements PetListener, PlanetListener {
         if (pet.getX() - planet.getX() < 10 && pet.getY() - planet.getY() < 10
         && pet.getX() - planet.getX() > -10 && pet.getY() - planet.getY() > -10) {
           handleEatEvent();
-          System.out.println("handle eat event");
         }
       }
     }, 1000, 400);
@@ -86,6 +94,9 @@ public class PetController implements PetListener, PlanetListener {
     planetView.update();
   }
 
+  /**
+   * Shows a pet eating and then reverts to idle.
+   */
   public void handleEatEvent() {
     pet.setState(State.EATING);
     view.eat();

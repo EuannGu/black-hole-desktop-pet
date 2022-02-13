@@ -56,6 +56,9 @@ public class BlackHolePet {
     this.state = state;
   }
 
+  /**
+   * Toggles the pet from awake to asleep or vice versa.
+   */
   public void toggleSleep() {
     if (state.equals(State.SLEEP)) {
       this.state = State.IDLE;
@@ -67,6 +70,9 @@ public class BlackHolePet {
     }
   }
 
+  /**
+   * Toggles the pet from one idle to another.
+   */
   public void toggleIdle() {
     if (state.equals(State.IDLE)) {
       this.state = State.IDLE2;
@@ -76,12 +82,17 @@ public class BlackHolePet {
     }
   }
 
+  /**
+   * Generates a random destination on the screen.
+   */
   public void generateDest() {
     dx = (int) (Math.random() * this.screenWidth);
     dy = (int) (Math.random() * this.screenHeight);
   }
 
-  // move one step closer to dx and dy
+  /**
+   * Moves the pet one step closer to dx and dy.
+   */
   public void move() {
     if (dx == 0 && dy == 0) {
       this.state = State.IDLE;

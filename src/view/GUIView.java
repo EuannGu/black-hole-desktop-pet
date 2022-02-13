@@ -15,6 +15,9 @@ import model.BlackHolePet;
 import model.State;
 import java.time.LocalTime;
 
+/**
+ * A view for the desktop pet.
+ */
 public class GUIView extends JFrame {
   private BlackHolePet pet;
   private ArrayList<PetListener> listeners;
@@ -31,6 +34,7 @@ public class GUIView extends JFrame {
   private boolean drag;
 
   private ArrayList<String> comments;
+
   /**
    * Creates a {@code GuiView} instance.
    */
@@ -60,9 +64,6 @@ public class GUIView extends JFrame {
     char semicolon = '\u003B';
     char parentheses = '\u0029';
     comments.add(Character.toString(semicolon) + Character.toString(parentheses));
-    //System.out.println(Character.toString(semicolon) + Character.toString(parentheses));
-    //comments.add("\;\)");
-    //comments.add("");
 
     // create and set up a window
     setTitle("inky");
@@ -140,10 +141,16 @@ public class GUIView extends JFrame {
     setVisible(true);
   }
 
+  /**
+   * Add a listener to this view.
+   */
   public void addViewListener(PetListener listener) {
     this.listeners.add(listener);
   }
 
+  /**
+   * Gets the path to the gif corresponding to the given state.
+   */
   private String getPath(State state) {
     switch (state) {
       case IDLE:
@@ -159,6 +166,9 @@ public class GUIView extends JFrame {
     }
   }
 
+  /**
+   * Updates this view with image icon if applicable and location.
+   */
   public void update() {
     if (!drag && !(pet.getState().equals(State.MOVING))) {
       icon.getImage().flush();
@@ -168,6 +178,9 @@ public class GUIView extends JFrame {
     setLocation(pet.getX(), pet.getY());
   }
 
+  /**
+   * Makes the pet show the eating gif once and then return to idle.
+   */
   public void eat() {
     toFront();
     update();
@@ -177,6 +190,5 @@ public class GUIView extends JFrame {
       e.printStackTrace();
     }
     pet.setState(State.IDLE);
-    System.out.println("ate");
   }
 }
