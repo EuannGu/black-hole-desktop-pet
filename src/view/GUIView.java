@@ -5,6 +5,7 @@ import java.awt.Color;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -29,6 +30,7 @@ public class GUIView extends JFrame {
   private ImageIcon icon;
   private boolean drag;
 
+  private ArrayList<String> comments;
   /**
    * Creates a {@code GuiView} instance.
    */
