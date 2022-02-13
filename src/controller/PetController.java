@@ -30,7 +30,8 @@ public class PetController implements PetListener, PlanetListener {
     timer.schedule(new TimerTask() {
       @Override
       public void run() {
-        if (pet.getState().equals(State.IDLE) || pet.getState().equals(State.IDLE2)) {
+        if ((pet.getState().equals(State.IDLE) || pet.getState().equals(State.IDLE2))
+        && Math.random() < .5){
           pet.generateDest();
           pet.setState(State.MOVING);
         }

@@ -12,6 +12,7 @@ import javax.swing.JLabel;
 import javax.swing.SwingUtilities;
 import model.BlackHolePet;
 import model.State;
+import java.time.LocalTime;
 
 public class GUIView extends JFrame {
   private BlackHolePet pet;
@@ -35,6 +36,32 @@ public class GUIView extends JFrame {
     this.pet = pet;
     this.listeners = new ArrayList<>();
     this.drag = false;
+
+    this.comments = new ArrayList<>();
+    comments.add("I like your outfit!");
+    comments.add("The time is " + LocalTime.now().format(DateTimeFormatter.ofPattern("HH:mm")));
+    comments.add("My name is Inky :D");
+    comments.add("Don't get too close!");
+    comments.add("I like eating rocks :D");
+    comments.add("I do not like eating gas giants");
+    comments.add("I spinny");
+    comments.add("I’m dizzy");
+    comments.add("You are doing great!");
+    comments.add("You are out of this world!");
+    comments.add("You’re a bringer of Jollity!");
+    comments.add("!! HackBeanpot !!");
+    comments.add("I was born in BeanTown");
+    comments.add("Make sure to rest!");
+    comments.add("I take naps regularly");
+    comments.add("You matter!");
+    comments.add("-3-");
+    char semicolon = '\u003B';
+    char parentheses = '\u0029';
+    comments.add(Character.toString(semicolon) + Character.toString(parentheses));
+    //System.out.println(Character.toString(semicolon) + Character.toString(parentheses));
+    //comments.add("\;\)");
+    //comments.add("");
+
     // create and set up a window
     setTitle("inky");
     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -81,7 +108,7 @@ public class GUIView extends JFrame {
 
       @Override
       public void mouseEntered(MouseEvent e) {
-
+        label.setToolTipText(comments.get((int) (Math.random() * (comments.size()))));
       }
 
       @Override
