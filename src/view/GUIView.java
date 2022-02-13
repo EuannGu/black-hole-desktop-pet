@@ -40,7 +40,7 @@ public class GUIView extends JFrame {
     // frame is transparent
     setUndecorated(true); // cancel window title bar
     setBackground(new Color(0, 0, 0, 0)); // background is transparent
-    setBounds(pet.getX(), pet.getY(), 192, 192);
+    setBounds(pet.getX(), pet.getY(), 80, 80);
     setAlwaysOnTop(true);
 
     icon = new ImageIcon(PATH_IDLE);
