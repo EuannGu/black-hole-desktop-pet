@@ -15,7 +15,8 @@ public class PlanetView extends JFrame {
 
   private Planet planet;
 
-  private final String PATH = "res/planet.png";
+  private ArrayList<String> paths;
+  private int path;
 
   private JLabel label;
   private ImageIcon icon;
@@ -24,6 +25,13 @@ public class PlanetView extends JFrame {
 
   public PlanetView(Planet planet) {
     this.planet = planet;
+    paths = new ArrayList<>();
+    paths.add("res/moon.png");
+    paths.add("res/saturn.png");
+    paths.add("res/earth.png");
+    paths.add("res/mars.png");
+    paths.add("res/chicken.png");
+    // TODO
 
     this.listeners = new ArrayList<>();
     this.drag = false;
@@ -37,7 +45,7 @@ public class PlanetView extends JFrame {
     setBounds(planet.getX(), planet.getY(), 80, 80);
     setAlwaysOnTop(true);
 
-    icon = new ImageIcon(PATH);
+    icon = new ImageIcon(paths.get(0));
     label = new JLabel(icon);
     getContentPane().add(label);
 
@@ -92,5 +100,17 @@ public class PlanetView extends JFrame {
 
   public void update() {
     setLocation(planet.getX(), planet.getY());
+  }
+
+  public void changePlanet() {
+    if (path == paths.size()-1) {
+      path = 0;
+    }
+    else {
+      path++;
+    }
+    icon.getImage().flush();
+    icon = new ImageIcon(paths.get(path));
+    label.setIcon(icon);
   }
 }

@@ -90,6 +90,7 @@ public class PetController implements PetListener, PlanetListener {
     view.eat();
     // planet spawn in random place
     planet.respawn();
+    planetView.changePlanet();
     planetView.update();
     view.update();
   }
